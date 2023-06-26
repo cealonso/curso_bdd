@@ -13,7 +13,7 @@ GROUP BY
 ORDER BY
     2 DESC
 
-
+#
 ### Actualizar la fecha de contratación del empleado 104 cinco días después de la fecha almacenada.
 
 ```
