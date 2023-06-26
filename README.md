@@ -1,2 +1,2 @@
-# curso_bdd
-Ejercicios sobre Bases de Datos (2023)
+# Ejercicios sobre Bases de Datos (2023)
+
