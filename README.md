@@ -13,6 +13,21 @@ WHERE
     department_id IN ( 10, 9, 11 );
 ```
 
+### Mostrar la cantidad de empleados que hay por cada nombre de departamento.
+
+```sql
+SELECT
+    e.department_id,
+    department_name,
+    COUNT(*)
+FROM
+    employees e
+    INNER JOIN departments d ON d.department_id = e.department_id
+GROUP BY
+    e.department_id,
+    department_name;
+```
+
 ### ¿Cuál fue el año donde ingresaron más trabajadores?
 
 ```sql
