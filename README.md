@@ -2,7 +2,8 @@
 
 ### ¿Cuál fue el año donde ingresaron más trabajadores?
 
-```SELECT
+```
+SELECT
     to_char(hire_date, 'YYYY') "Año Contratación",
     COUNT(employee_id)         "Empleados"
 FROM
