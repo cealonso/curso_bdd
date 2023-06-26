@@ -3,9 +3,14 @@
 ### Devolver la información: Nombre, Apellido y N° de Departamento de los empleados que trabajan en los departamentos 9,10 y 11.
 
 ```sql
-SELECT FIRST_NAME, LAST_NAME, DEPARTMENT_ID
-FROM EMPLOYEES
-WHERE DEPARTMENT_ID IN (10, 9, 11);
+SELECT
+    first_name,
+    last_name,
+    department_id
+FROM
+    employees
+WHERE
+    department_id IN ( 10, 9, 11 );
 ```
 
 ### ¿Cuál fue el año donde ingresaron más trabajadores?
