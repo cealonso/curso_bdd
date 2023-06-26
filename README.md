@@ -16,7 +16,7 @@ ORDER BY
 ```
 ### Actualizar la fecha de contratación del empleado 104 cinco días después de la fecha almacenada.
 
-```
+```sql
 UPDATE employees
 SET
     hire_date = hire_date + 5
