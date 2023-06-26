@@ -1,6 +1,12 @@
 # Ejercicios sobre Bases de Datos (2023)
 
-### Devolver la información: Nombre, Apellido y N° de Departamento de los empleados que trabajan en los departamentos 9,10 y 11.
+### Devolver la información: 
+
+- Nombre
+- Apellido
+-  N° de Departamento
+
+de los empleados que trabajan en los departamentos 9,10 y 11.
 
 ```sql
 SELECT
