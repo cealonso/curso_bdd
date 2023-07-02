@@ -59,9 +59,9 @@ WHERE
 ```
 
 ### Se necesita crear un procedimiento almacenado denominado simulator_salary que permita simular el cálculo del salario de un empleado para los 12 meses del próximo año. Para poder realizar la simulación debe tenerse en cuenta lo siguiente:
-El primer, segundo y tercer mes el salario será el mismo que el de diciembre del año anterior.
-Los meses de Abril, Mayo y Junio el salario será un 10% más que la del mes de diciembre del año anterior.
-Los meses de Julio, Agosto, Septiembre, Octubre y Noviembre será un 30% más que el mes de diciembre del año anterior.
-Finalmente, en el último mes del año además del último incremento recibido en los meses de Julio, Agosto, Septiembre, Octubre y Noviembre tendrá un bono de 1000 dólares más.
+### -El primer, segundo y tercer mes el salario será el mismo que el de diciembre del año anterior.
+### -Los meses de Abril, Mayo y Junio el salario será un 10% más que la del mes de diciembre del año anterior.
+### -Los meses de Julio, Agosto, Septiembre, Octubre y Noviembre será un 30% más que el mes de diciembre del año anterior.
+### Finalmente, en el último mes del año además del último incremento recibido en los meses de Julio, Agosto, Septiembre, Octubre y Noviembre tendrá un bono de 1000 dólares más.
 
 
