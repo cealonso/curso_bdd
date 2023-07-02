@@ -64,4 +64,30 @@ WHERE
 ### -Los meses de Julio, Agosto, Septiembre, Octubre y Noviembre será un 30% más que el mes de diciembre del año anterior.
 ### Finalmente, en el último mes del año además del último incremento recibido en los meses de Julio, Agosto, Septiembre, Octubre y Noviembre tendrá un bono de 1000 dólares más.
 
+```sql
+CREATE OR REPLACE PROCEDURE simulator_salary(
+    p_employee_id IN EMPLOYEES.EMPLOYEE_ID%TYPE
+) IS
+  v_salary EMPLOYEES.SALARY%TYPE;
+  v_new_salary EMPLOYEES.EMPLOYEE_ID%TYPE;
+BEGIN
+SELECT salary into v_salary FROM employees WHERE employee_id=p_employee_id;
+DBMS_OUTPUT.PUT_LINE('SIMULADOR DE SALARIOS' || chr (10));
+FOR counter IN 1..12 LOOP
+ IF counter between 1 AND 3  THEN
+   DBMS_OUTPUT.PUT_LINE(TO_CHAR(TO_DATE(counter, 'MM'), 'MONTH') || ' : ' || v_salary);
+ ELSIF counter between 4 AND 6 THEN
+   v_new_salary:= v_salary+v_salary * 0.01;
+   DBMS_OUTPUT.PUT_LINE(TO_CHAR(TO_DATE(counter, 'MM'), 'MONTH') || ' : ' || v_new_salary);
+ ELSIF counter between 7 AND 11 THEN
+   v_new_salary:= v_salary+v_salary * 0.03;
+   DBMS_OUTPUT.PUT_LINE(TO_CHAR(TO_DATE(counter, 'MM'), 'MONTH') || ' : ' || v_new_salary);
+ ELSE
+  v_new_salary:= (v_salary+v_salary * 0.03)+1000;
+   DBMS_OUTPUT.PUT_LINE(TO_CHAR(TO_DATE(counter, 'MM'), 'MONTH') || ' : ' || v_new_salary);
+ END IF;
+END LOOP;
+END;
+```
+
 
