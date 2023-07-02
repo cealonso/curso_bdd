@@ -69,7 +69,7 @@ CREATE OR REPLACE PROCEDURE simulator_salary(
     p_employee_id IN EMPLOYEES.EMPLOYEE_ID%TYPE
 ) IS
   v_salary EMPLOYEES.SALARY%TYPE;
-  v_new_salary EMPLOYEES.EMPLOYEE_ID%TYPE;
+  v_new_salary EMPLOYEES.SALARY%TYPE;
 BEGIN
 SELECT salary into v_salary FROM employees WHERE employee_id=p_employee_id;
 DBMS_OUTPUT.PUT_LINE('SIMULADOR DE SALARIOS' || chr (10));
