@@ -89,7 +89,7 @@ FOR counter IN 1..12 LOOP
 END LOOP;
 END;
 ```
-### Realizar un stored procedure que liste los nombres y apellidos de los empleados que fueron contratados en un determinado año ### por un departamento dado 
+### Realizar un stored procedure que liste los nombres y apellidos de los empleados que fueron contratados en un determinado año por un departamento dado 
 
 ```sql
 
