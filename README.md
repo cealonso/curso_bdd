@@ -89,5 +89,23 @@ FOR counter IN 1..12 LOOP
 END LOOP;
 END;
 ```
+### Realizar un stored procedure que liste los nombres y apellidos de los empleados que fueron contratados en un determinado año ### por un departamento dado 
 
+```sql
+
+CREATE OR REPLACE PROCEDURE emp_full_name( p_depto_name IN departments.department_name%TYPE,p_year IN NUMBER) IS
+v_first_name employees.first_name%TYPE;
+v_last_name employees.last_name%TYPE;
+BEGIN
+   For D in (SELECT e.first_name, e.last_name into v_first_name,v_last_name
+               FROM employees e
+               join departments d
+                 on e.department_id = d.department_id 
+              where d.department_name = p_depto_name
+                and extract(year from e.hire_date) = p_year) 
+   LOOP     
+        DBMS_OUTPUT.PUT_LINE(D.FIRST_NAME || ' ' || D.LAST_NAME);
+   END LOOP;
+END;
+```
 
