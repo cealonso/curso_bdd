@@ -108,7 +108,7 @@ BEGIN
    END LOOP;
 END;
 ```
-### Realizar un procedimiento almacenado que devuelva el nombre, su puesto laboral y la fecha de contrataión de un empleado cuyo id es pasado por parámetro en su invocación.
+### Realizar un procedimiento almacenado que devuelva el nombre, su puesto laboral y la fecha de contratación de un empleado cuyo id es pasado por parámetro en su invocación.
 
 ```sql
 
