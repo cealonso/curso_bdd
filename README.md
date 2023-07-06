@@ -108,4 +108,24 @@ BEGIN
    END LOOP;
 END;
 ```
+### Realizar un procedimiento almacenado que devuelva el nombre, el apellido, el salario y la fecha de contrataión de un empleado cuyo id es pasado por parámetro en su invocación.
+
+```sql
+
+CREATE OR REPLACE PROCEDURE emp_sal_query 
+(p_empnro IN 
+employees.employee_id%TYPE)
+IS
+ r_emp employees%ROWTYPE;
+BEGIN
+ SELECT * into r_emp
+ FROM employees WHERE employee_id = p_empnro;
+ DBMS_OUTPUT.PUT_LINE('Employee # : ' || p_empnro);
+ DBMS_OUTPUT.PUT_LINE('Name : ' || r_emp.last_name);
+ DBMS_OUTPUT.PUT_LINE('Job : ' || r_emp.email);
+ DBMS_OUTPUT.PUT_LINE('Hire Date : ' || r_emp.salary);
+END;
+```
+
+
 
