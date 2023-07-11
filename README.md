@@ -126,6 +126,26 @@ BEGIN
  DBMS_OUTPUT.PUT_LINE('Hire Date : ' || r_emp.salary);
 END;
 ```
+### Realizar un procedimiento almacenado que permita actualizar el nombre de un departamento basado en un código.Deberá manejar excepciones para los casos que sean necesarios.
 
+```sql
 
+CREATE OR REPLACE PROCEDURE upd_department(p_new_name departments.department_name%TYPE,p_deptno departments.department_id%TYPE ) 
+IS
+e_invalid_dept EXCEPTION;
+BEGIN
+           UPDATE departments
+           SET department_name = p_new_name
+           WHERE department_id = p_deptno;
+          IF SQL%NOTFOUND THEN
+             RAISE e_invalid_dept;
+          END IF;
+          EXCEPTION
+            WHEN e_invalid_dept THEN
+            DBMS_OUTPUT.PUT_LINE ('No such department');
+            DBMS_OUTPUT.PUT_LINE (SQLCODE);
+           WHEN OTHERS THEN
+           DBMS_OUTPUT.PUT_LINE('Otro Error -> '||SQLERRM);
+ END;
+```
 
