@@ -148,7 +148,7 @@ BEGIN
            DBMS_OUTPUT.PUT_LINE('Otro Error -> '||SQLERRM);
  END;
 ```
-### Realizar un procedimiento almacenado que permita insertar una región geográfica dado dos parámetros un id y un nombre de región. Deberá manejar excepciones para el caso de que se intente colocar un id que ya exista.
+### Realizar un procedimiento almacenado que permita insertar una región geográfica dado dos parámetros un id y un nombre de región. Deberá manejar excepciones para el caso de que se intente colocar un id que ya exista. Use transacciones.
 
 ```sql
 
@@ -159,6 +159,7 @@ BEGIN
 insert into regions values(p_id,p_name);
 v_total_rows := sql%rowcount;
 dbms_output.put_line(v_total_rows || ' Region insertada/s');
+COMMIT;
 EXCEPTION
 WHEN dup_val_on_index THEN
 dbms_output.put_line('Clave duplicada no se puede insertar la region');
