@@ -148,7 +148,7 @@ BEGIN
            DBMS_OUTPUT.PUT_LINE('Otro Error -> '||SQLERRM);
  END;
 ```
-### Realizar un procedimiento almacenado que permita insertar una región geográfica dado dos parámetros un id y un nombre de región. Deberá manejar excepciones para los casos que sean necesarios.
+### Realizar un procedimiento almacenado que permita insertar una región geográfica dado dos parámetros un id y un nombre de región. Deberá manejar excepciones para el caso de que se intente colocar un id que ya exista.
 
 ```sql
 
