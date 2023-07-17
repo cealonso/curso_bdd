@@ -165,4 +165,45 @@ WHEN dup_val_on_index THEN
 dbms_output.put_line('Clave duplicada no se puede insertar la region');
 END;
 ```
+###Realizar un procedimiento almacenado que permita almacenar un empleado completo. El SP deberá devolver la cantidad de filas afectadas por la inserción deberá ser devuelta por el atributo SQL%ROWCOUNT. Además, el procedimiento deberá realizar lo siguiente:
+Calcular el id del nuevo empleado calculando el máximo valor existente y sumándole uno.
+### -Los nombres, apellidos, email y teléfono de contacto.
+### -El id del puesto a ingresar debe existir en la tabla jobs.
+### -El id del departamento a ingresar debe existir en la tabla departments.
+### -La fecha de contratación es la fecha actual del sistema.
+### -El salario mínimo será de 7000.
+### -Deberá colocar las excepciones necesarias para la inserción correcta del empleado.
+
+```sql
+
+CREATE OR REPLACE PROCEDURE new_employee (p_first_name in employees.first_name%TYPE, 
+p_last_name in employees.last_name%TYPE,
+p_email in employees.email%TYPE,
+p_phone_number in employees.phone_number%TYPE,
+p_job_id in employees.job_id%TYPE,
+p_manager_id in employees.manager_id%TYPE,
+p_department_id in employees.department_id%TYPE,
+p_dni in employees.dni%TYPE)
+is
+v_new_id number;
+v_total_rows number;
+v_new_jobs employees.job_id%TYPE;
+v_new_department_id employees.department_id%TYPE;
+c_salary CONSTANT employees.salary%TYPE:=7000;
+BEGIN
+select max(employee_id) into v_new_id FROM employees;
+v_new_id:=v_new_id+1;
+select job_id  into v_new_jobs from jobs where job_id=p_job_id;
+select department_id  into v_new_department_id from departments where department_id=p_department_id;
+insert into employees values(v_new_id,p_first_name,p_last_name,p_email,p_phone_number,sysdate(),p_job_id,c_salary,p_manager_id,p_department_id,p_dni);
+v_total_rows := sql%rowcount;
+COMMIT;
+dbms_output.put_line('Filas Afectadas '|| v_total_rows);
+EXCEPTION
+WHEN no_data_found THEN
+dbms_output.put_line('No EXISTE dicho JOB/DEPARTMENT');
+WHEN others THEN
+dbms_output.put_line('Otro Error -> '||SQLERRM);
+END;
+```
 
