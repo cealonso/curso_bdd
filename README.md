@@ -166,7 +166,7 @@ dbms_output.put_line('Clave duplicada no se puede insertar la region');
 END;
 ```
 ### Realizar un procedimiento almacenado que permita almacenar un empleado completo. El SP deberá devolver la cantidad de filas afectadas por la inserción deberá ser devuelta por el atributo SQL%ROWCOUNT. Además, el procedimiento deberá realizar lo siguiente:
-Calcular el id del nuevo empleado calculando el máximo valor existente y sumándole uno.
+### -Calcular el id del nuevo empleado calculando el máximo valor existente y sumándole uno.
 ### -Los nombres, apellidos, email y teléfono de contacto.
 ### -El id del puesto a ingresar debe existir en la tabla jobs.
 ### -El id del departamento a ingresar debe existir en la tabla departments.
