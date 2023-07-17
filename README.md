@@ -168,7 +168,7 @@ END;
 ### Realizar un procedimiento almacenado que permita almacenar un empleado completo. El SP deberá devolver la cantidad de filas afectadas por la inserción usando el atributo SQL%ROWCOUNT. Además, el procedimiento deberá realizar lo siguiente:
 
 ### -Calcular el id del nuevo empleado calculando el máximo valor existente y sumándole uno.
-### -Los nombres, apellidos, email y teléfono de contacto.
+### -Los nombres, apellidos, email, teléfono de contacto, id del manager y DNI deben ingresarse por parámetro.
 ### -El id del puesto a ingresar debe existir en la tabla jobs.
 ### -El id del departamento a ingresar debe existir en la tabla departments.
 ### -La fecha de contratación es la fecha actual del sistema.
