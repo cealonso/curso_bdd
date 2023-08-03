@@ -207,7 +207,7 @@ WHEN others THEN
 dbms_output.put_line('Otro Error -> '||SQLERRM);
 END;
 ```
-### Usando cursores PL/SQL mostrar la salida de la siguiente información de los empleados cuyo salario sean menores a 2800 dólares:
+### Usando cursores PL/SQL mostrar la siguiente información de los empleados cuyo salario sean menores a 2800 dólares:
 ### -N° de Empleado
 ### -Nombre
 ### -Apellido
