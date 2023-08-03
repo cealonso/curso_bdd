@@ -207,4 +207,34 @@ WHEN others THEN
 dbms_output.put_line('Otro Error -> '||SQLERRM);
 END;
 ```
+### Usando cursores PL/SQL mostrar la salida de la siguiente información de los empleados cuyo salario sean menores a 2800 dólares:
+### -N° de Empleado
+### -Nombre
+### -Apellido
+### -Salario
+
+```sql
+DECLARE
+    CURSOR c_employees IS
+        SELECT employee_id,first_name,last_name,salary FROM employees WHERE salary<=2800;
+    v_id employees.employee_id%TYPE;
+    v_name employees.first_name%TYPE;
+    v_lastname employees.last_name%TYPE;
+    v_salary employees.salary%TYPE;
+    v_num NUMBER := 0;
+BEGIN
+    DBMS_OUTPUT.PUT_LINE(LPAD('-',50,'-'));
+    DBMS_OUTPUT.PUT_LINE('INFORME DE EMPLEADOS');
+    DBMS_OUTPUT.PUT_LINE(LPAD('-',50,'-'));
+    OPEN c_employees;
+    LOOP
+        FETCH c_employees INTO v_id,v_name,v_lastname,v_salary;
+        EXIT WHEN c_employees%NOTFOUND;
+        v_num := v_num+1;
+        DBMS_OUTPUT.PUT_LINE('[' || v_num || '] Empleado N° '|| v_id || ' - ' || v_name || ' ' || v_lastname || ' tiene un sueldo de' ||TO_CHAR(v_salary,'$99,999.00'));
+    END LOOP;
+    CLOSE c_employees;
+END;
+```
+
 
