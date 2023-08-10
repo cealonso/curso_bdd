@@ -236,5 +236,20 @@ BEGIN
     CLOSE c_employees;
 END;
 ```
+### Realizar en PL/SQL un listado de los distintos apellidos de los empleados junto a su salario.
 
-
+```sql
+CREATE OR REPLACE PROCEDURE all_salaries
+IS
+    CURSOR c_employees IS SELECT last_name, salary FROM employees;
+    r_employee c_employees%ROWTYPE;
+BEGIN
+    OPEN c_employees;
+    LOOP
+        FETCH c_employees INTO r_employee;
+        EXIT WHEN c_employees%NOTFOUND;
+        DBMS_OUTPUT.PUT_LINE( r_employee.last_name || ' tiene un salario de :  ' || r_employee.salary );
+    END LOOP;
+    CLOSE c_employees;
+END;
+```
