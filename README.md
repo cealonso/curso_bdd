@@ -253,3 +253,56 @@ BEGIN
     CLOSE c_employees;
 END;
 ```
+### Realizar un paquete en PL/SQL que permita:
+### -Visualizar los salarios de todos los empleados de la tabla employees.
+### -Dado un código de empleado visualizar su salario.
+### -Actualizar mediante su id el salario de un empleado.
+
+```sql
+CREATE OR REPLACE PACKAGE emp AS
+   PROCEDURE all_salaries;
+   PROCEDURE find_sal(e_id employees.employee_id%type);
+   PROCEDURE update_salary(p_id IN employees.employee_id%TYPE, p_new_salary employees.salary%TYPE);
+END emp;
+```
+```sql
+CREATE OR REPLACE PACKAGE BODY emp AS
+PROCEDURE all_salaries
+IS
+    CURSOR c_employees IS SELECT last_name, salary FROM employees;
+    r_employee c_employees%ROWTYPE;
+BEGIN
+    OPEN c_employees;
+    LOOP
+        FETCH c_employees INTO r_employee;
+        EXIT WHEN c_employees%NOTFOUND;
+        DBMS_OUTPUT.PUT_LINE( r_employee.last_name || ' tiene un salario de :  ' || r_employee.salary );
+    END LOOP;
+    CLOSE c_employees;
+END;
+PROCEDURE find_sal
+(e_id employees.employee_id%TYPE) 
+IS
+   e_sal employees.salary%TYPE;
+BEGIN
+      SELECT salary INTO e_sal
+      FROM employees
+      WHERE employee_id = e_id;
+      dbms_output.put_line('Salary: '|| e_sal);
+END;
+PROCEDURE update_salary
+(p_id IN employees.employee_id%TYPE, p_new_salary employees.salary%TYPE)
+IS
+BEGIN
+    UPDATE employees SET salary = p_new_salary
+    WHERE employee_id = p_id;
+    COMMIT;
+    DBMS_OUTPUT.PUT_LINE('Salario del empleado modificado');
+EXCEPTION
+    WHEN OTHERS THEN
+        ROLLBACK;
+END; 
+END;
+```
+
+
